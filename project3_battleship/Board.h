@@ -13,8 +13,9 @@ class Board
 protected:
 	int *board;
 public:
-	//Default Constructor, Desctructor, changing value at a point, operator overloading to show board to screen
+	//Default and one other Constructor, Desctructor, changing value at a point, operator overloading to show board to screen
 	Board();
+	Board(int);
 	~Board();
 	int& at(int, int);
 	friend ostream &operator<<(ostream&, const Board&);

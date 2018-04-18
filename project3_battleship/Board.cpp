@@ -14,6 +14,16 @@ Board::Board()
 		board[i] = 0;
 	}
 }
+Board::Board(int val)
+{
+	//Creates an array of size 36
+	board = new int[36];
+	//Sets each value to 0 when initialized
+	for (int i = 0; i < 36; i++)
+	{
+		board[i] = val;
+	}
+}
 //Destructor for new data
 Board::~Board()
 {
