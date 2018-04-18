@@ -3,7 +3,7 @@
 #include "Board.h"
 using namespace std;
 
-//Default and only constructor
+//Top board
 Board::Board()
 {
 	//Creates an array of size 36
@@ -14,14 +14,30 @@ Board::Board()
 		board[i] = 0;
 	}
 }
+//Bottom board
 Board::Board(int val)
 {
+	//Initial seed for random number
+	srand(time(NULL));
+	//0 = horizontal, 1 = vertical
+	int horizVert = rand() % 2, startLoc;
 	//Creates an array of size 36
 	board = new int[36];
 	//Sets each value to 0 when initialized
 	for (int i = 0; i < 36; i++)
 	{
 		board[i] = val;
+	}
+	if (horizVert == 0)
+	{
+		do
+		{
+			startLoc = rand() % 6;
+		} while (startLoc + 4 > 6);
+		for (int i = startLoc; i < 6; i++)
+		{
+			board[i] = 1;
+		}
 	}
 }
 //Destructor for new data

@@ -4,6 +4,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
+#include "Battleship.h"
 using namespace std;
 
 //Board class to show and change board values
