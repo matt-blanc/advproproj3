@@ -20,9 +20,10 @@ Board::Board(int val)
 	//Initial seed for random number
 	srand(time(NULL));
 	//0 = horizontal, 1 = vertical
-	int horizVert = rand() % 2, startLoc;
+	int horizVert = (rand() % 2), startLoc, rowCol;
 	//Creates an array of size 36
 	board = new int[36];
+
 	//Sets each value to 0 when initialized
 	for (int i = 0; i < 36; i++)
 	{
@@ -32,11 +33,24 @@ Board::Board(int val)
 	{
 		do
 		{
+			rowCol = rand() % 6;
 			startLoc = rand() % 6;
 		} while (startLoc + 4 > 6);
-		for (int i = startLoc; i < 6; i++)
+		for (int i = startLoc; i < (startLoc + 4); i++)
 		{
-			board[i] = 1;
+			board[(rowCol * 6) + i] = 1;
+		}
+	}
+	else
+	{
+		do
+		{
+			rowCol = rand() % 6;
+			startLoc = rand() % 6;
+		} while (startLoc + 4 > 6);
+		for (int i = startLoc; i < (startLoc + 4); i++)
+		{
+			board[rowCol + (i * 6)] = 1;
 		}
 	}
 }
