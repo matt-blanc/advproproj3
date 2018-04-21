@@ -20,7 +20,7 @@ Board::Board(int val)
 {
 	bool changeLoc;
 	Battleship bat;
-	//Initial seed for random number
+	//Seeds random number
 	srand(time(NULL));
 	//0 = horizontal, 1 = vertical
 	int horizVert, col, row;
@@ -34,17 +34,18 @@ Board::Board(int val)
 	}
 	for (int j = 0; j < 2; j++)
 	{
+		//If its 0 horizontal, 1 vertical
 		horizVert = rand() % 2;
 		if (horizVert == 0)
 		{
-			changeLoc = false;
 			do
 			{
-				do
-				{
-					row = rand() % 6;
-					col = rand() % 6;
-				} while (col + bat.getLength() > 5);
+				//Makes it default to no error
+				changeLoc = false;
+				//Gets a semi-random row and column
+				row = rand() % 6;
+				col = rand() % (6 - bat.getLength());
+				//First checks to see if something else is there where it wants to go
 				for (int i = col; i < (col + bat.getLength()); i++)
 				{
 					if (board[(row * 6) + i] == 1)
@@ -53,6 +54,7 @@ Board::Board(int val)
 						break;
 					}
 				}
+				//If it does not need to change, put a ship there
 				if (!changeLoc)
 				{
 					for (int i = col; i < (col + bat.getLength()); i++)
@@ -64,25 +66,26 @@ Board::Board(int val)
 		}
 		else
 		{
-			changeLoc = false;
 			do
 			{
-				do
+				//Makes it default to no error
+				changeLoc = false;
+				//Gets a semi-random row and column
+				row = rand() % (6 - bat.getLength());
+				col = rand() % 6;
+				//First checks to see if something else is there where it wants to go
+				for (int i = row; i < (row + bat.getLength()); i++)
 				{
-					row = rand() % 6;
-					col = rand() % 6;
-				} while (row + bat.getLength() > 5);
-				for (int i = col; i < (col + bat.getLength()); i++)
-				{
-					if (board[row + (i + 6)] == 1)
+					if (board[row + (i * 6)] == 1)
 					{
 						changeLoc = true;
 						break;
 					}
 				}
+				//If it does not need to change, put a ship there
 				if (!changeLoc)
 				{
-					for (int i = col; i < (col + bat.getLength()); i++)
+					for (int i = row; i < (row + bat.getLength()); i++)
 					{
 						board[row + (i * 6)] = 1;
 					}
