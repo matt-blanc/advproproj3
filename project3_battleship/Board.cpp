@@ -1,6 +1,7 @@
-//Needed libraries 
+//Needed libraries
 #include "stdafx.h"
 #include "Board.h"
+#include "Battleship.h"
 using namespace std;
 
 //Top board
@@ -17,10 +18,12 @@ Board::Board()
 //Bottom board
 Board::Board(int val)
 {
+	bool changeLoc;
+	Battleship bat;
 	//Initial seed for random number
 	srand(time(NULL));
 	//0 = horizontal, 1 = vertical
-	int horizVert = (rand() % 2), startLoc, rowCol;
+	int horizVert, col, row;
 	//Creates an array of size 36
 	board = new int[36];
 
@@ -29,28 +32,62 @@ Board::Board(int val)
 	{
 		board[i] = val;
 	}
-	if (horizVert == 0)
+	for (int j = 0; j < 2; j++)
 	{
-		do
+		horizVert = rand() % 2;
+		if (horizVert == 0)
 		{
-			rowCol = rand() % 6;
-			startLoc = rand() % 6;
-		} while (startLoc + 4 > 6);
-		for (int i = startLoc; i < (startLoc + 4); i++)
-		{
-			board[(rowCol * 6) + i] = 1;
+			changeLoc = false;
+			do
+			{
+				do
+				{
+					row = rand() % 6;
+					col = rand() % 6;
+				} while (col + bat.getLength() > 5);
+				for (int i = col; i < (col + bat.getLength()); i++)
+				{
+					if (board[(row * 6) + i] == 1)
+					{
+						changeLoc = true;
+						break;
+					}
+				}
+				if (!changeLoc)
+				{
+					for (int i = col; i < (col + bat.getLength()); i++)
+					{
+						board[(row * 6) + i] = 1;
+					}
+				}
+			} while (changeLoc);
 		}
-	}
-	else
-	{
-		do
+		else
 		{
-			rowCol = rand() % 6;
-			startLoc = rand() % 6;
-		} while (startLoc + 4 > 6);
-		for (int i = startLoc; i < (startLoc + 4); i++)
-		{
-			board[rowCol + (i * 6)] = 1;
+			changeLoc = false;
+			do
+			{
+				do
+				{
+					row = rand() % 6;
+					col = rand() % 6;
+				} while (row + bat.getLength() > 5);
+				for (int i = col; i < (col + bat.getLength()); i++)
+				{
+					if (board[row + (i + 6)] == 1)
+					{
+						changeLoc = true;
+						break;
+					}
+				}
+				if (!changeLoc)
+				{
+					for (int i = col; i < (col + bat.getLength()); i++)
+					{
+						board[row + (i * 6)] = 1;
+					}
+				}
+			} while (changeLoc);
 		}
 	}
 }

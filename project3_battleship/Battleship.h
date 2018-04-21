@@ -1,14 +1,12 @@
-#include "Board.h"
-
-/*class Battleship
+#pragma once
+class Battleship
 {
 protected:
-	int *posXY;
-	int health, length;
+	int health;
+	int length;
 public:
 	Battleship();
-	~Battleship();
 	void hit();
 	int getHealth();
 	int getLength();
-};*/
+};

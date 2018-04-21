@@ -1,19 +1,10 @@
 #include "stdafx.h"
 #include "Battleship.h"
 
-/*Battleship::Battleship()
+Battleship::Battleship()
 {
-	this->health = 4;
-	this->length = 4;
-	posXY = new int[4];
-	for (int i = 0; i < 3; i++)
-	{
-		posXY[i] = 1;
-	}
-}
-Battleship::~Battleship()
-{
-	delete posXY;
+	health = 4;
+	length = 4;
 }
 void Battleship::hit()
 {
@@ -26,4 +17,4 @@ int Battleship::getHealth()
 int Battleship::getLength()
 {
 	return length;
-}*/
+}
