@@ -26,7 +26,7 @@ Ship::~Ship()				//destructor that will be used to destroy the health array
 {
 	delete[] health;//[] to delete entire array rather than just first position
 }
-	
+
 
 /* 1). need a pure virtual function for hit (moves health array down by 1) and getlength/getsize
 	2). do we need heatlth to be an array or can it be an integer?
