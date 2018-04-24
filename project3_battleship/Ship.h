@@ -7,8 +7,6 @@ using namespace std;
 
 class Ship
 {
-	int startX, startY, length, horizVert; //positions, length of ship, whether its horizontal or vertical
-
 public:
 	virtual int getLength() = 0; //pure virtual function to get length of a ship
 	virtual void hit() = 0; //pure virtual function to hit a ship
