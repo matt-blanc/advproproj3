@@ -34,74 +34,71 @@ int& Board::at(int row, int col)
 {
 	return board[row * 6 + col];
 }
-void Board::addShips(Ship* shipList)
+void Board::addShip(Ship* shipList)
 {
 	//Boolean to see if it needs to change location
 	bool changeLoc;
 	//0 = horizontal, 1 = vertical
 	int col, row;
-	for (int j = 0; j < 2; j++)
+	//If its 0 horizontal, 1 vertical
+	if (shipList->getHorizVert() == 0)
 	{
-		//If its 0 horizontal, 1 vertical
-		if (shipList[j].getHorizVert() == 0)
+		do
 		{
-			do
+			//Makes it default to no error
+			changeLoc = false;
+			//Gets a semi-random row and column
+			row = (int)rand() % 6;
+			col = (int)rand() % (6 - shipList->getLength());
+			//First checks to see if something else is there where it wants to go
+			for (int i = col; i < (col + shipList->getLength()); i++)
 			{
-				//Makes it default to no error
-				changeLoc = false;
-				//Gets a semi-random row and column
-				row = (int)rand() % 6;
-				col = (int)rand() % (6 - shipList[j].getLength());
-				//First checks to see if something else is there where it wants to go
-				for (int i = col; i < (col + shipList[j].getLength()); i++)
+				if (board[(row * 6) + i] == 1)
 				{
-					if (board[(row * 6) + i] == 1)
-					{
-						changeLoc = true;
-						break;
-					}
+					changeLoc = true;
+					break;
 				}
-				//If it does not need to change, put a ship there
-				if (!changeLoc)
-				{
-					for (int i = col; i < (col + shipList[j].getLength()); i++)
-					{
-						board[(row * 6) + i] = 1;
-					}
-				}
-			} while (changeLoc);
-		}
-		else
-		{
-			do
+			}
+			//If it does not need to change, put a ship there
+			if (!changeLoc)
 			{
-				//Makes it default to no error
-				changeLoc = false;
-				//Gets a semi-random row and column
-				row = (int)rand() % (6 - shipList[j].getLength());
-				col = (int)rand() % 6;
-				//First checks to see if something else is there where it wants to go
-				for (int i = row; i < (row + shipList[j].getLength()); i++)
+				for (int i = col; i < (col + shipList->getLength()); i++)
 				{
-					if (board[row + (i * 6)] == 1)
-					{
-						changeLoc = true;
-						break;
-					}
+					board[(row * 6) + i] = 1;
 				}
-				//If it does not need to change, put a ship there
-				if (!changeLoc)
-				{
-					for (int i = row; i < (row + shipList[j].getLength()); i++)
-					{
-						board[row + (i * 6)] = 1;
-					}
-				}
-			} while (changeLoc);
-		}
-		shipList[j].setX(col);
-		shipList[j].setY(row);
+			}
+		} while (changeLoc);
 	}
+	else
+	{
+		do
+		{
+			//Makes it default to no error
+			changeLoc = false;
+			//Gets a semi-random row and column
+			row = (int)rand() % (6 - shipList->getLength());
+			col = (int)rand() % 6;
+			//First checks to see if something else is there where it wants to go
+			for (int i = row; i < (row + shipList->getLength()); i++)
+			{
+				if (board[row + (i * 6)] == 1)
+				{
+					changeLoc = true;
+					break;
+				}
+			}
+			//If it does not need to change, put a ship there
+			if (!changeLoc)
+			{
+				for (int i = row; i < (row + shipList->getLength()); i++)
+				{
+					board[row + (i * 6)] = 1;
+				}
+			}
+		} while (changeLoc);
+	}
+	shipList->setX(col);
+	shipList->setY(row);
 }
 //Operator overloading to use with cout to form board
 ostream &operator<<(ostream&, const Board& b)

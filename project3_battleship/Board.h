@@ -18,6 +18,6 @@ public:
 	Board(int); //Other constructor
 	~Board(); //Destructor
 	int& at(int, int); //changing value at a point
-	void addShips(Ship*); //adds ships to a board
+	void addShip(Ship*); //adds ships to a board
 	friend ostream &operator<<(ostream&, const Board&); //operator overloading to show board
 };
