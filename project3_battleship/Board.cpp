@@ -49,7 +49,7 @@ void Board::addShip(Ship* shipList)
 			changeLoc = false;
 			//Gets a semi-random row and column
 			row = (int)rand() % 6;
-			col = (int)rand() % (6 - shipList->getLength());
+			col = (int)rand() % (7 - shipList->getLength());
 			//First checks to see if something else is there where it wants to go
 			for (int i = col; i < (col + shipList->getLength()); i++)
 			{
@@ -76,12 +76,12 @@ void Board::addShip(Ship* shipList)
 			//Makes it default to no error
 			changeLoc = false;
 			//Gets a semi-random row and column
-			row = (int)rand() % (6 - shipList->getLength());
+			row = (int)rand() % (7 - shipList->getLength());
 			col = (int)rand() % 6;
 			//First checks to see if something else is there where it wants to go
 			for (int i = row; i < (row + shipList->getLength()); i++)
 			{
-				if (board[row + (i * 6)] == 1)
+				if (board[col + (i * 6)] == 1)
 				{
 					changeLoc = true;
 					break;
@@ -92,7 +92,7 @@ void Board::addShip(Ship* shipList)
 			{
 				for (int i = row; i < (row + shipList->getLength()); i++)
 				{
-					board[row + (i * 6)] = 1;
+					board[col + (i * 6)] = 1;
 				}
 			}
 		} while (changeLoc);
