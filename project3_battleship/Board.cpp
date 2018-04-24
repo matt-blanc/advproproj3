@@ -1,7 +1,6 @@
 //Needed libraries
 #include "stdafx.h"
 #include "Board.h"
-#include "shipList[j]tleship.h"
 using namespace std;
 
 //Top board
@@ -39,23 +38,20 @@ void Board::addShips(Ship* shipList)
 {
 	//Boolean to see if it needs to change location
 	bool changeLoc;
-	//Seeds random number
-	srand(time(NULL));
 	//0 = horizontal, 1 = vertical
-	int horizVert, col, row;
+	int col, row;
 	for (int j = 0; j < 2; j++)
 	{
 		//If its 0 horizontal, 1 vertical
-		horizVert = rand() % 2;
-		if (horizVert == 0)
+		if (shipList[j].getHorizVert() == 0)
 		{
 			do
 			{
 				//Makes it default to no error
 				changeLoc = false;
 				//Gets a semi-random row and column
-				row = rand() % 6;
-				col = rand() % (6 - shipList[j].getLength());
+				row = (int)rand() % 6;
+				col = (int)rand() % (6 - shipList[j].getLength());
 				//First checks to see if something else is there where it wants to go
 				for (int i = col; i < (col + shipList[j].getLength()); i++)
 				{
@@ -82,8 +78,8 @@ void Board::addShips(Ship* shipList)
 				//Makes it default to no error
 				changeLoc = false;
 				//Gets a semi-random row and column
-				row = rand() % (6 - shipList[j].getLength());
-				col = rand() % 6;
+				row = (int)rand() % (6 - shipList[j].getLength());
+				col = (int)rand() % 6;
 				//First checks to see if something else is there where it wants to go
 				for (int i = row; i < (row + shipList[j].getLength()); i++)
 				{
@@ -103,6 +99,8 @@ void Board::addShips(Ship* shipList)
 				}
 			} while (changeLoc);
 		}
+		shipList[j].setX(col);
+		shipList[j].setY(row);
 	}
 }
 //Operator overloading to use with cout to form board
