@@ -5,19 +5,20 @@
 #include <cstdlib>
 #include <iostream>
 #include <cmath>
-#include "Ship.h"
+#include "Battleship.h"
 using namespace std;
 
-class Board //Board class to show and change board values
+//Board class to show and change board values
+class Board
 {
-	
+	//Will be used for an array
 protected:
-	int *board; //Will be used for an array
+	int *board;
 public:
-	Board(); //Default constructor
-	Board(int); //Other constructor
-	~Board(); //Destructor
-	int& at(int, int); //changing value at a point
-	void addShip(Ship*); //adds ships to a board
-	friend ostream &operator<<(ostream&, const Board&); //operator overloading to show board
+	//Default and one other Constructor, Desctructor, changing value at a point, operator overloading to show board to screen
+	Board();
+	Board(int);
+	~Board();
+	int& at(int, int);
+	friend ostream &operator<<(ostream&, const Board&);
 };
