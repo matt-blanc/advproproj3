@@ -9,6 +9,8 @@ using namespace std;
 
 class Ship
 {
+protected:
+	int health, length, startX, startY, horizVert; //health and length are equal, the starting location x/y and starting orientation
 public:
 	virtual int getLength() = 0; //pure virtual function to get length of a ship
 	virtual void hit() = 0; //pure virtual function to hit a ship

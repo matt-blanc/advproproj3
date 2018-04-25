@@ -96,9 +96,9 @@ void Board::addShip(Ship* shipList)
 				}
 			}
 		} while (changeLoc);
+		shipList->setX(col);
+		shipList->setY(row);
 	}
-	shipList->setX(col);
-	shipList->setY(row);
 }
 //Operator overloading to use with cout to form board
 ostream &operator<<(ostream&, const Board& b)

@@ -3,9 +3,6 @@
 #include "Ship.h"
 class Cruiser : public Ship
 {
-
-protected:
-	int health, length, startX, startY, horizVert; //health and length are equal, the starting location x/y and starting orientation
 public:
 	Cruiser(); //Default and only constructor
 	virtual void hit(); //virtual "hit" function
