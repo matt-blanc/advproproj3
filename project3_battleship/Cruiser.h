@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-#include "stdafx.h"
-#include <iomanip>
-#include <cstdlib>
-#include <iostream>
-#include <cmath>
-#include "Battleship.h"
-#include "Ship.h"
 
-/*class Cruiser : public Ship
-{
-public: 
-	Cruiser();
-
-}; */
-=======
 #pragma once
 #include "Ship.h"
 class Cruiser : public Ship
@@ -32,4 +17,4 @@ public:
 	virtual void setY(int); //virtual function to set starting y coordinate
 	virtual int getHorizVert(); //virtual function to get starting orientation
 };
->>>>>>> b4fe1d14f4331307ee9dbe3d64a5375f809b52ec
+

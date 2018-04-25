@@ -1,20 +1,4 @@
 #include "stdafx.h"
-<<<<<<< HEAD
-#include <iomanip>
-#include <cstdlib>
-#include <iostream>
-#include <cmath>
-#include "Battleship.h"
-#include "Ship.h"
-#include "Cruiser.h"
-
-/*Cruiser::Cruiser()
-{
-	Name = "Cruiser";
-	Width = 3;
-	ShipType = ShipType.Cruiser;
-} */
-=======
 #include "Cruiser.h"
 #include <cmath>
 
@@ -67,4 +51,4 @@ int Cruiser::getHorizVert()
 {
 	return horizVert;
 }
->>>>>>> b4fe1d14f4331307ee9dbe3d64a5375f809b52ec
+
