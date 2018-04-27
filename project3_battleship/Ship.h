@@ -7,6 +7,7 @@
 #define SHIP_H
 using namespace std;
 
+//abstract class for all ships (ie. batteship/cruiser/destroyer)
 class Ship
 {
 protected:

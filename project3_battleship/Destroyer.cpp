@@ -47,6 +47,7 @@ void Destroyer::setY(int y)
 {
 	startY = y;
 }
+//returns whether the ship is horizontal or vertical
 int Destroyer::getHorizVert()
 {
 	return horizVert;

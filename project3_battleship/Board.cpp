@@ -95,10 +95,12 @@ void Board::addShip(Ship* shipList)
 					board[col + (i * 6)] = 1;
 				}
 			}
+			//Keep trying to choose a location if the ship can't be placed
 		} while (changeLoc);
-		shipList->setX(col);
-		shipList->setY(row);
 	}
+	//set the finished coordinates
+	shipList->setX(col);
+	shipList->setY(row);
 }
 //Operator overloading to use with cout to form board
 ostream &operator<<(ostream&, const Board& b)
@@ -113,6 +115,7 @@ ostream &operator<<(ostream&, const Board& b)
 	for (int i = 0; i < 6; i++)
 	{
 		cout << endl << i;
+		//output values for that row
 		for (int j = 0; j < 6; j++)
 		{
 			cout << setw(2) << b.board[(i * 6) + j];

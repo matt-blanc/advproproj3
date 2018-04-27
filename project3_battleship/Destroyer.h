@@ -1,5 +1,6 @@
 #pragma once
 #include "Ship.h"
+//Derived class from ship (2 health, 2 length)
 class Destroyer : public Ship
 {
 public:

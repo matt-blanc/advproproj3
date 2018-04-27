@@ -47,8 +47,8 @@ void Cruiser::setY(int y)
 {
 	startY = y;
 }
+//returns whether the ship is horizontal or vertical
 int Cruiser::getHorizVert()
 {
 	return horizVert;
 }
-
