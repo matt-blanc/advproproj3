@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Cruiser.h"
-#include <cmath>
 
 //Default constructor for a "cruiser" sized ship
 Cruiser::Cruiser()

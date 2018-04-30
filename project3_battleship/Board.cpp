@@ -43,6 +43,7 @@ void Board::addShip(Ship* shipList)
 	//If its 0 horizontal, 1 vertical
 	if (shipList->getHorizVert() == 0)
 	{
+		//loop that keeps trying to find a unused location
 		do
 		{
 			//Makes it default to no error

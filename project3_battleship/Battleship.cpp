@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Battleship.h"
-#include <cmath>
 
 //Default constructor for a "battleship" sized ship
 Battleship::Battleship()

@@ -1,12 +1,10 @@
 
-
 #pragma once
-#include "stdafx.h"
 #include <iostream>
+#include <cmath>
 #ifndef SHIP_H
 #define SHIP_H
 using namespace std;
-
 //abstract class for all ships (ie. batteship/cruiser/destroyer)
 class Ship
 {

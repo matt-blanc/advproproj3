@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Destroyer.h"
-#include <cmath>
 
 //Default constructor for a "Destroyer" sized ship
 Destroyer::Destroyer()

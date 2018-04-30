@@ -1,4 +1,5 @@
 #pragma once
+//Only needs Ship header (that contains all other header files needed for each ship)
 #include "Ship.h"
 //Derived class from ship (3 health, 3 length)
 class Cruiser : public Ship
